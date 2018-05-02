@@ -142,9 +142,9 @@ def application(environ, start_response):
     except ZeroDivisionError:
         status = "400 Bad Request"
         body = "<h1>Cannot Divide By Zero</h1>"
-    #except Exception:
-        #status = "500 Internal ServerError"
-        #body = "<h1>Internal Server Error</h1>"
+    except Exception:
+        status = "500 Internal ServerError"
+        body = "<h1>Internal Server Error</h1>"
     finally:
         headers.append(('Content-length', str(len(body))))
         start_response(status, headers)
